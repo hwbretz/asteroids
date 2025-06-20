@@ -42,6 +42,11 @@ def main():
         for upd in updateable:
             upd.update(dt)
         for ast in asteroids:
+            for bullet in shot_group:
+                if ast.collision(bullet):
+                    ast.split()
+                    bullet.kill()
+        for ast in asteroids:
             if ast.collision(player_sprite):
                 print("Game over!")
                 exit(0)
